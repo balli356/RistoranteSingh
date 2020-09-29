@@ -1,0 +1,13 @@
+.jumbotron{
+    background-color: #212529;
+    color: white;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 25px;
+}
+.jumbotron:hover{
+
+    color:#ff2a2a;
+}
+a:hover{
+    text-decoration: none;
+}

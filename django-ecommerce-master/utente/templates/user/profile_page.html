@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+    Profile your page
+{% endblock %}
+
+{% block head %}
+       <link rel="stylesheet" type="text/css" href="{% static "css/profile_page.css" %}">
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ profile }}</h1>
+    <div class="wrapper">
+    <div class="profile container">
+        <div class="profile_img_info">
+
+             <div class="info">
+                 <p><b>Nome:</b> {{ profile.user.first_name }}</p>
+                 <p><b>Cognome:</b> {{profile.user.last_name }}</p>
+                 <p><b>Email:</b> {{ profile.user }}</p>
+             </div>
+        </div>
+    </div>
+    <div class="profile_counts container">
+        <div class="profile_counts_wrap">
+            <a href="{% url 'order:list-orders' %}">
+           <div class="item">
+             <div class="title">Visualizza ordini completati</div>
+          </div>
+            </a>
+        </div>
+        <div class="profile_counts_wrap">
+            <a href="{% url 'utente:address-list' %}">
+           <div class="item">
+           <div class="title">Gestisci indirizzi spedizione</div>
+          </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

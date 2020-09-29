@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+    Regitration form
+{% endblock %}
+
+{% block content %}
+    <form method="post">{% csrf_token %}
+        {{ form | crispy}}
+        <input type='submit' value='Create New User'>
+    </form>
+<h1>ciao</h1>
+{% endblock %}
