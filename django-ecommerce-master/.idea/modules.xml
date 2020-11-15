@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/django-ecommerce-master.iml" filepath="$PROJECT_DIR$/.idea/django-ecommerce-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../django-ristorante-singh/.idea/django-ristorante.iml" filepath="$PROJECT_DIR$/../django-ristorante-singh/.idea/django-ristorante.iml" />
     </modules>
   </component>
 </project>

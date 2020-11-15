@@ -1,0 +1,34 @@
+{% extends 'base_list.html.html' %}
+{% block list_title %}Indirizzi{% endblock %}
+
+
+{% block table_head %}
+    <div class="container">
+
+
+    <table class="table table-striped table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Codice Ref. Prenotazione</th>
+        <th scope="col">Codice Ref. Prenotazione</th>
+        <th scope="col">Codice Ref. Prenotazione</th>
+        <th scope="col">Codice Ref. Prenotazione</th>
+    </tr>
+
+    </thead>
+
+{% endblock %}
+{% block table_body %}
+    {% for addr in object_list %}
+        <tr>
+            <td>{{ addr.ref_code }}</td>
+            <td>{{ addr.ref_code }}</td>
+            <td>{{ addr.ref_code }}</td>
+            <td>{{ addr.ref_code }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+    </div>
+
+
+{% endblock %}

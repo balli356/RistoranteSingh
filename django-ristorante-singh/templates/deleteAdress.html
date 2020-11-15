@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block title %}Adress delete{% endblock %}
+
+{% block content %}
+    <h1>Delete indrizzo</h1>
+    <p>Vuoi davvero cancellare il undrizzo?</p>
+    <p>indrizzo name: {{ object.citta }}</p>
+    <form method="post">{% csrf_token %}
+        <input class="btn btn-danger" type="submit" value="Delete">
+        <a class="btn btn-secondary"
+           href="{% url 'core:profile' %}">
+            Cancel
+        </a>
+    </form>
+{% endblock %}

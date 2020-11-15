@@ -5,7 +5,6 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="core.urls.urlpatterns" />
-          <option value="super.form_valid" />
         </list>
       </option>
     </inspection_tool>
