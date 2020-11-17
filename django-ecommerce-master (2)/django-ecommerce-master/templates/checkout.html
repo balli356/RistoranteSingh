@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <main >
+        <div class="container wow fadeIn">
+            <h2 class="my-5 h2 text-center">Checkout form</h2>
+            <div class="row">
+                <div class="col-md-8 mb-4">
+                    <div class="card">
+                        <form method="POST" class="card-body">
+                            {% csrf_token %}
+
+
+
+                                <h3>Payment option</h3>
+
+
+                                <div class="d-block my-3">
+                                    {% for value, name in form.fields.payment_option.choices %}
+
+                                        <div class="custom-control custom-radio">
+                                            <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio" class="custom-control-input" required>
+                                            <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
+
+
+
+                                        </div>
+                                    {% endfor %}
+
+                                    <div id="paypal-button-container"></div>
+
+                                    <!-- Include the PayPal JavaScript SDK -->
+                                    <script src="https://www.paypal.com/sdk/js?client-id=AVjYQlZx8vUwjkq3UaK8yljXkvL-ymygcsAyv52lAGBmgdx6q9PmK2FwWO3NcwCGCONHzPetJblG1K8z&currency=USD"></script>
+
+                                    <script>
+                                        var total= '{{ order.get_total }}'
+                                        // Render the PayPal button into #paypal-button-container
+                                        paypal.Buttons({
+
+                                            // Set up the transaction
+                                            createOrder: function(data, actions) {
+                                                return actions.order.create({
+                                                    purchase_units: [{
+                                                        amount: {
+                                                            value: parseFloat(total).toFixed(2)
+                                                        }
+                                                    }]
+                                                });
+                                            },
+
+                                            // Finalize the transaction
+                                            onApprove: function(data, actions) {
+                                                return actions.order.capture().then(function(details) {
+                                                    // Show a success message to the buyer
+                                                    alert('Ordine completato dal ' + details.payer.name.given_name + '!');
+                                                });
+                                            }
+
+
+                                        }).render('#paypal-button-container');
+                                    </script>
+                                </div>
+
+                                <hr class="mb-4">
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    {% include "order_snippet.html" %}
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+{% endblock content %}
+
+{% block extra_scripts %}
+    <script>
+        var hideable_shipping_form = $('.hideable_shipping_form');
+        var hideable_billing_form = $('.hideable_billing_form');
+
+        var use_default_shipping = document.querySelector("input[name=use_default_shipping]");
+        var use_default_billing = document.querySelector("input[name=use_default_billing]");
+
+        use_default_shipping.addEventListener('change', function() {
+            if (this.checked) {
+                hideable_shipping_form.hide();
+            } else {
+                hideable_shipping_form.show();
+            }
+        })
+
+        use_default_billing.addEventListener('change', function() {
+            if (this.checked) {
+                hideable_billing_form.hide();
+            } else {
+                hideable_billing_form.show();
+            }
+        })
+
+    </script>
+{% endblock extra_scripts %}

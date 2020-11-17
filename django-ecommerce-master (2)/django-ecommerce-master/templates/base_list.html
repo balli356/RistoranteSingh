@@ -1,0 +1,28 @@
+{% extends 'base.html' %}#
+{% load static %}
+
+{% block title %}Lista {% block list_page_title %}{% endblock %}{% endblock %}
+
+{% block content %}
+    {% block top %}
+    {% endblock %}
+    <h1>{% block list_title %}{% endblock %}</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                {% block table_head %}
+
+                {% endblock %}
+            </tr>
+        </thead>
+        <tbody>
+            {% block table_body %}
+
+            {% endblock %}
+        </tbody>
+    </table>
+
+    {% block table_after %}
+
+    {% endblock %}
+{% endblock %}

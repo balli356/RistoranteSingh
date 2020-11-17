@@ -1,0 +1,31 @@
+{% extends 'base_list.html' %}#
+{% load static %}
+
+{% block title %}Person delete{% endblock %}
+
+
+{% block top %}<h1>Elimina indirizzo</h1>{% endblock %}
+{% block table_body %}
+        {{ request.user }}
+        {{object.pk }}
+        <tr><td><b>Nazione</b></td><td>{{ object.nazione }}</td></tr>
+        <tr><td><b>Regione</b></td><td>{{ object.regione }}</td></tr>
+        <tr><td><b>Provincia</b></td><td>{{ object.provincia }}</td></tr>
+        <tr><td><b>CAP</b></td><td>{{ object.cap }}</td></tr>
+        <tr><td><b>Città</b></td><td>{{ object.città }}</td></tr>
+        <tr><td><b>Via/Piazza</b></td><td>{{ object.via }}</td></tr>
+        <tr><td><b>Numero civico</b></td><td>{{ object.n_civico }}</td></tr>
+        <tr><td><b>Piano</b></td><td>{{ object.piano }}</td></tr>
+        <tr><td><b>Note</b></td><td>{{ object.note }}</td></tr>
+
+{% endblock %}
+{% block table_after %}
+    <form method="post">{% csrf_token %}
+        <input class="btn btn-danger" type="submit" value="Elimina">
+        <a class="btn btn-secondary"
+           href="{% url 'user:address-list' %}">
+            Cancel
+        </a>
+    </form>
+{% endblock %}
+
